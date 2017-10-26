@@ -31,6 +31,7 @@ body {
 
 // Show Pages
 .puzzle {
+  position: relative;
   text-align: center;
 }
 
@@ -41,6 +42,7 @@ body {
 
 .heading h1 {
   display: inline-block;
+  margin-top: 0px;
 }
 
 .heading h1:first-of-type {
@@ -63,4 +65,26 @@ body {
 .puzzle-image {
   width: 1100px;
   height: auto;
+  border: 2px solid black;
+}
+
+.selection-menu {
+  height: 125px;
+  width: 110px;
+  border: 2px solid red;
+  background: #e2e2e2;
+  display: inline-block;
+  display: none;
+  position: absolute;
+
+  div {
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+  }
+
+  button {
+    height: 30px;
+    width: 85%;
+  }
 }
