@@ -15,7 +15,6 @@ jQuery ->
     function getClickCoords(click) {
       clickX = click.pageX - puzzleLeft;
       clickY = click.pageY - puzzleTop;
-      console.log(clickX, clickY);
     };
 
     function evaluateClick() {

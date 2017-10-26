@@ -1,3 +1,65 @@
+body {
+  background: #992c2c;
+}
+
+// Index Page
+.index-heading {
+  text-align: center;
+  margin: 2px;
+}
+
+.select-puzzle {
+  text-align: center;
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+  margin: 10px;
+}
+
+.select-puzzle h1 a {
+  text-decoration: none;
+  color: #000;
+}
+
+.select-puzzle h1 a:hover {
+  text-decoration: underline;
+}
+
+.puzzle-preview {
+  width: 100%;
+}
+
+// Show Pages
+.puzzle {
+  text-align: center;
+}
+
+.heading {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.heading h1 {
+  display: inline-block;
+}
+
+.heading h1:first-of-type {
+  float: left;
+}
+
+.heading h1:last-of-type {
+  float: right;
+}
+
+.heading h1 a {
+  color: #000;
+  text-decoration: none;
+}
+
+.heading h1 a:hover {
+  text-decoration: underline;
+}
+
 .puzzle-image {
   width: 1100px;
   height: auto;

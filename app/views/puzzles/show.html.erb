@@ -1,4 +1,7 @@
 <div class="puzzle">
-  <h1><%= @puzzle.name %></h1>
+  <div class="heading">
+    <h1><%= @puzzle.name %></h1>
+    <h1><%= link_to "Back To Puzzles", root_path %></h1>
+  </div>
   <%= image_tag(@puzzle.image_url, class: "puzzle-image") %>
 </div>
