@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  top_left_x: 1
+  top_left_y: 1
+  bot_right_x: 1
+  bot_right_y: 1
+  puzzle: one
+
+two:
+  name: MyString
+  top_left_x: 1
+  top_left_y: 1
+  bot_right_x: 1
+  bot_right_y: 1
+  puzzle: two
