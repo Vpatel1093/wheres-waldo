@@ -2,6 +2,7 @@ jQuery ->
   `$(document).ready(function() {
     var clickX;
     var clickY;
+    var menu;
     var menuPositionX;
     var menuPositionY;
 
@@ -10,9 +11,13 @@ jQuery ->
     var puzzleLeft = rect.left;
     var puzzleHeight = rect.bottom;
 
-    function wheresWaldo(click) {
-      getClickCoords(click);
-      evaluateClick();
+    function updateMenuAndClickCoords(click) {
+      menu = $('.selection-menu')
+      // Only update click coordinates if character selection menu is not open
+      if (menu.hasClass('closed')) {
+        getClickCoords(click);
+      };
+      openCloseMenu();
     };
 
     function getClickCoords(click) {
@@ -22,18 +27,31 @@ jQuery ->
       clickY = click.pageY - puzzleTop;
     };
 
-    function evaluateClick() {
-      // Show and move select menu
+    function openCloseMenu() {
       if (clickX > 0 && clickX < 1100) {
         if (clickY > 0 && clickY < puzzleHeight) {
-          $('.selection-menu').show();
-          $('.selection-menu').css('top', menuPositionY);
-          $('.selection-menu').css('left', menuPositionX);
-        }
-      }
+          if (menu.hasClass('closed')) {
+            menu.removeClass('closed').addClass('open');
+            menu.css('top', menuPositionY);
+            menu.css('left', menuPositionX);
+          } else if (menu.hasClass('open')) {
+            menu.removeClass('open').addClass('closed');
+          };
+        };
+      };
+    };
+
+    function checkCharacterSelection(characterSelected) {
+      alert((characterSelected).text());
     };
 
     document.addEventListener('click', function(click) {
-      wheresWaldo(click);
+      if(!$(click.target).is('.selection-menu div, .selection-menu')) {
+        updateMenuAndClickCoords(click);
+      }
+    });
+
+    $('button').click(function() {
+      checkCharacterSelection($(this));
     });
   });`

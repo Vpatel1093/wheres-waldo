@@ -74,7 +74,6 @@ body {
   border: 2px solid red;
   background: #e2e2e2;
   display: inline-block;
-  display: none;
   position: absolute;
 
   div {
@@ -87,4 +86,12 @@ body {
     height: 30px;
     width: 85%;
   }
+}
+
+.open {
+  display: block;
+}
+
+.closed {
+  display: none;
 }
