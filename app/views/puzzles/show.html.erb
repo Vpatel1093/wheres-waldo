@@ -1,13 +1,21 @@
 <div class="puzzle">
   <div class="heading">
-    <h1><%= @puzzle.name %></h1>
+    <h1 class="x"><%= @puzzle.name %></h1>
     <h1><%= link_to "Back To Puzzles", root_path %></h1>
   </div>
   <div class="selection-menu closed">
     <div>Who is this?</div>
-    <button>Waldo</button>
-    <button>Wenda</button>
-    <button>Wizard</button>
+    <% @puzzle.characters.each do |character| %>
+      <button><%= character.name %></button>
+    <% end %>
   </div>
   <%= image_tag(@puzzle.image_url, class: "puzzle-image") %>
+  <div id="remaining-characters">
+    <h5>Characters Left:<h5>
+    <% @puzzle.characters.each do |character| %>
+      <div class="remaining-character">
+        <%= image_tag(character.name, class: "character-image") %>
+      </div>
+    <% end %>
+  </div>
 </div>

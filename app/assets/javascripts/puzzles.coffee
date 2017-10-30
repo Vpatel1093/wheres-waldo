@@ -28,7 +28,7 @@ jQuery ->
     };
 
     function openCloseMenu() {
-      if (clickX > 0 && clickX < 1100) {
+      if (clickX > 0 && clickX < 1104) {
         if (clickY > 0 && clickY < puzzleHeight) {
           if (menu.hasClass('closed')) {
             menu.removeClass('closed').addClass('open');
@@ -54,4 +54,8 @@ jQuery ->
     $('button').click(function() {
       checkCharacterSelection($(this));
     });
+
+    $(document).on("click", function(event) {
+      alert("x: " + (event.pageX-puzzleLeft) + " y: " + (event.pageY-puzzleTop))
+    })
   });`

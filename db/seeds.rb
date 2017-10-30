@@ -1,3 +1,15 @@
 Puzzle.create(name: 'Easy', image_url: 'easy.jpg')
+Character.create(name: 'Waldo', top_left_x: 708, top_left_y: 725, bot_right_x: 758, bot_right_y: 804, puzzle_id: 1)
+Character.create(name: 'Wenda', top_left_x: 723, top_left_y: 433, bot_right_x: 744, bot_right_y: 473, puzzle_id: 1)
+Character.create(name: 'Wizard', top_left_x: 1073, top_left_y: 756, bot_right_x: 1094, bot_right_y: 782, puzzle_id: 1)
+
 Puzzle.create(name: 'Medium', image_url: 'medium.jpg')
+Character.create(name: 'Oddlaw', top_left_x: 262, top_left_y: 392, bot_right_x: 283, bot_right_y: 462, puzzle_id: 2)
+Character.create(name: 'Wizard', top_left_x: 674, top_left_y: 381, bot_right_x: 726, bot_right_y: 450, puzzle_id: 2)
+Character.create(name: 'Waldo', top_left_x: 565, top_left_y: 387, bot_right_x: 605, bot_right_y: 441, puzzle_id: 2)
+
 Puzzle.create(name: 'Hard', image_url: 'hard.jpg')
+Character.create(name: 'Waldo', top_left_x: 791, top_left_y: 225, bot_right_x: 825, bot_right_y: 252, puzzle_id: 3)
+Character.create(name: 'Wenda', top_left_x: 323, top_left_y: 455, bot_right_x: 338, bot_right_y: 475, puzzle_id: 3)
+Character.create(name: 'Oddlaw', top_left_x: 213, top_left_y: 466, bot_right_x: 227, bot_right_y: 489, puzzle_id: 3)
+Character.create(name: 'Wizard', top_left_x: 377, top_left_y: 243, bot_right_x: 391, bot_right_y: 260, puzzle_id: 3)
