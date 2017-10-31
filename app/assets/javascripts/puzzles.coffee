@@ -42,7 +42,69 @@ jQuery ->
     };
 
     function checkCharacterSelection(characterSelected) {
-      alert((characterSelected).text());
+      clickCorrect = correctCharacterAndClickLocation(characterSelected)
+      if (clickCorrect) {
+          successMessage();
+          hideCharacter();
+          checkForGameOver();
+      } else {
+        tryAgainMessage();
+      };
+    };
+
+    function correctCharacterAndClickLocation(characterSelected) {
+      var puzzleID = $('.puzzle').attr('id');
+      var characterSelected = characterSelected.text();
+      var characters = [];
+      var character = '';
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/puzzles/" + puzzleID,
+        success: function(data) {
+          characters = JSON.parse(JSON.stringify(data))
+          character = getValueByKey("name", characterSelected, characters)
+        }
+      });
+      if (character && clickInCharacterSpace(character)) {
+        return true;
+      } else {
+        return false;
+      };
+    };
+
+    function getValueByKey(key,valueSelected,data) {
+      for (i = 0; i < data.length; i++) {
+        if (data[i][key] == valueSelected) {
+          return data[i];
+        }
+      }
+    }
+
+    function clickInCharacterSpace(character) {
+      if (clickX > character["top_left_x"] && clickX < character["bot_right_x"]) {
+        if (clickY > character["top_left_y"] && clickY < character["bot_right_y"]) {
+          return true;
+        };
+      } else {
+        return false;
+      };
+    };
+
+    function successMessage() {
+      alert("success");
+    };
+
+    function hideCharacter() {
+
+    };
+
+    function checkForGameOver() {
+
+    };
+
+    function tryAgainMessage() {
+
     };
 
     document.addEventListener('click', function(click) {
@@ -54,8 +116,4 @@ jQuery ->
     $('button').click(function() {
       checkCharacterSelection($(this));
     });
-
-    $(document).on("click", function(event) {
-      alert("x: " + (event.pageX-puzzleLeft) + " y: " + (event.pageY-puzzleTop))
-    })
   });`
