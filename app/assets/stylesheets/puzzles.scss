@@ -17,6 +17,10 @@ body {
   margin: 10px;
 }
 
+.select-puzzle a img:hover {
+  border: 2px solid #fff;
+}
+
 .select-puzzle h1 a {
   text-decoration: none;
   color: #000;
@@ -50,6 +54,13 @@ body {
 
 .heading h1:first-of-type {
   float: left;
+}
+
+.heading h3 {
+  margin-left: 31%;
+  display: inline-block;
+  float: left;
+  color: #fff;
 }
 
 .heading h1:last-of-type {

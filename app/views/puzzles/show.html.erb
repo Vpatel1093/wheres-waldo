@@ -1,6 +1,7 @@
 <div class="puzzle" id="<%= @puzzle_id %>">
   <div class="heading">
-    <h1 class="x"><%= @puzzle.name %></h1>
+    <h1><%= @puzzle.name %></h1>
+    <h3 id="timer"></h3>
     <h1><%= link_to "Back To Puzzles", root_path %></h1>
   </div>
   <div class="selection-menu closed">

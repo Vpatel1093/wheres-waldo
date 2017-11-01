@@ -5,6 +5,9 @@ jQuery ->
     var menu;
     var menuPositionX;
     var menuPositionY;
+    var timeStart;
+    var formattedTime
+    var gameInPlay = true;
 
     var rect = $('.puzzle-image')[0].getBoundingClientRect();
     scrollLeft = window.pageXOffset;
@@ -12,6 +15,30 @@ jQuery ->
     var puzzleLeft = rect.left + scrollLeft || document.documentElement.scrollLeft;
     var puzzleTop = rect.top + scrollTop || document.documentElement.scrollTOP;
     var puzzleHeight = rect.bottom-rect.top;
+
+    function startTimer() {
+      if (gameInPlay) {
+        timeStart = timeStart || new Date();
+        var timeNow = new Date();
+        var displayTime = Math.abs(timeNow - timeStart)/1000;
+        var h = Math.floor(displayTime/3600);
+        var m = Math.floor(60*(((displayTime)/3600)%1));
+        var s = Math.floor(displayTime%60);
+        m = checkTime(m);
+        s = checkTime(s);
+        formattedTime = h + ":" + m + ":" + s;
+        $('#timer').text(formattedTime);
+        var t = setTimeout(startTimer, 500);
+      } else if (gameInPlay == false) {
+        submitScore(formattedTime);
+      };
+    };
+
+    function checkTime(i) {
+      // add zero in front of numbers < 10
+      if (i < 10) {i = "0" + i};
+      return i;
+    };
 
     function updateMenuAndClickCoords(click) {
       menu = $('.selection-menu')
@@ -114,7 +141,8 @@ jQuery ->
 
     function checkForGameOver() {
       if($('.remaining-character.closed').length == $('.remaining-character').length) {
-        alert("You found everyone!")
+        gameInPlay = false;
+        alert("You found everyone!");
       };
     };
 
@@ -127,6 +155,10 @@ jQuery ->
 
     function hideOpenMessages() {
       $('.message.open').removeClass('open').addClass('closed');
+    };
+
+    function submitScore(formattedScore) {
+      alert(formattedScore);
     }
 
     document.addEventListener('click', function(click) {
@@ -140,4 +172,6 @@ jQuery ->
       checkCharacterSelection($(this));
       openCloseMenu();
     });
+
+    startTimer();
   });`
