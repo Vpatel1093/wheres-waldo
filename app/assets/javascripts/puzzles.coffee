@@ -62,6 +62,11 @@ jQuery ->
           if (clickInCharacterSpace(characterObject)) {
             displaySuccessMessage();
             hideCharacter(characterSelected);
+            markCharacter(characterSelected,
+                          characterObject["top_left_y"],
+                          characterObject["top_left_x"],
+                          characterObject["bot_right_y"]-characterObject["top_left_y"],
+                          characterObject["bot_right_x"]-characterObject["top_left_x"]);
             checkForGameOver();
           } else {
             displayTryAgainMessage();
@@ -98,6 +103,14 @@ jQuery ->
     function hideCharacter(characterSelected) {
       $('#' + characterSelected).addClass('closed');
     };
+
+    function markCharacter(characterSelected, top, left, height, width) {
+      $('.' + characterSelected).css('top', top + puzzleTop);
+      $('.' + characterSelected).css('left', left + puzzleLeft);
+      $('.' + characterSelected).height(height);
+      $('.' + characterSelected).width(width);
+      $('.' + characterSelected).removeClass('closed');
+    }
 
     function checkForGameOver() {
       if($('.remaining-character.closed').length == $('.remaining-character').length) {

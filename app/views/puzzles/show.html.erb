@@ -15,6 +15,9 @@
   <div class="try-again message closed">
     <div>Try again!</div>
   </div>
+  <% @puzzle.characters.each do |character| %>
+    <div class="<%= character.name %> marker closed"></div>
+  <% end %>
   <%= image_tag(@puzzle.image_url, class: "puzzle-image") %>
   <div id="remaining-characters">
     <h5>Characters Left:<h5>
