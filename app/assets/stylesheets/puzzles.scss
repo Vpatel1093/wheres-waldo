@@ -98,6 +98,28 @@ body {
   }
 }
 
+.message {
+  width: 110px;
+  background: #e2e2e2;
+  display: inline-block;
+  position: absolute;
+
+  div {
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    margin-bottom: 5px;
+  }
+}
+
+.success {
+  border: 2px solid green;
+}
+
+.try-again {
+  border: 2px solid red;
+}
+
 .open {
   display: block;
 }
@@ -114,7 +136,7 @@ body {
 
   h5 {
     margin: 6px auto;
-    margin-top: 0px;  
+    margin-top: 0px;
     color: #fff;
   }
 

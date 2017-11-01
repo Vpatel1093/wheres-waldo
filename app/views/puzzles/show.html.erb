@@ -9,11 +9,17 @@
       <button><%= character.name %></button>
     <% end %>
   </div>
+  <div class="success message closed">
+    <div>Good job!</div>
+  </div>
+  <div class="try-again message closed">
+    <div>Try again!</div>
+  </div>
   <%= image_tag(@puzzle.image_url, class: "puzzle-image") %>
   <div id="remaining-characters">
     <h5>Characters Left:<h5>
     <% @puzzle.characters.each do |character| %>
-      <div class="remaining-character">
+      <div class="remaining-character" id="<%= character.name %>">
         <%= image_tag(character.name, class: "character-image") %>
       </div>
     <% end %>

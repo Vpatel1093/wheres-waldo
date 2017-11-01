@@ -7,9 +7,11 @@ jQuery ->
     var menuPositionY;
 
     var rect = $('.puzzle-image')[0].getBoundingClientRect();
-    var puzzleTop = rect.top;
-    var puzzleLeft = rect.left;
-    var puzzleHeight = rect.bottom;
+    scrollLeft = window.pageXOffset;
+    scrollTop = window.pageYOffset;
+    var puzzleLeft = rect.left + scrollLeft || document.documentElement.scrollLeft;
+    var puzzleTop = rect.top + scrollTop || document.documentElement.scrollTOP;
+    var puzzleHeight = rect.bottom-rect.top;
 
     function updateMenuAndClickCoords(click) {
       menu = $('.selection-menu')
@@ -42,35 +44,30 @@ jQuery ->
     };
 
     function checkCharacterSelection(characterSelected) {
-      clickCorrect = correctCharacterAndClickLocation(characterSelected)
-      if (clickCorrect) {
-          successMessage();
-          hideCharacter();
-          checkForGameOver();
-      } else {
-        tryAgainMessage();
-      };
-    };
-
-    function correctCharacterAndClickLocation(characterSelected) {
       var puzzleID = $('.puzzle').attr('id');
       var characterSelected = characterSelected.text();
+      getCharacterObject(characterSelected, puzzleID)
+    };
+
+    function getCharacterObject(characterSelected, puzzleID) {
       var characters = [];
-      var character = '';
-      $.ajax({
+      var characterObject = '';
+      return $.ajax({
         type: "GET",
         dataType: "json",
         url: "/puzzles/" + puzzleID,
         success: function(data) {
           characters = JSON.parse(JSON.stringify(data))
-          character = getValueByKey("name", characterSelected, characters)
+          characterObject = getValueByKey("name", characterSelected, characters)
+          if (clickInCharacterSpace(characterObject)) {
+            displaySuccessMessage();
+            hideCharacter(characterSelected);
+            checkForGameOver();
+          } else {
+            displayTryAgainMessage();
+          };
         }
       });
-      if (character && clickInCharacterSpace(character)) {
-        return true;
-      } else {
-        return false;
-      };
     };
 
     function getValueByKey(key,valueSelected,data) {
@@ -81,9 +78,9 @@ jQuery ->
       }
     }
 
-    function clickInCharacterSpace(character) {
-      if (clickX > character["top_left_x"] && clickX < character["bot_right_x"]) {
-        if (clickY > character["top_left_y"] && clickY < character["bot_right_y"]) {
+    function clickInCharacterSpace(characterObject) {
+      if (clickX > characterObject["top_left_x"] && clickX < characterObject["bot_right_x"]) {
+        if (clickY > characterObject["top_left_y"] && clickY < characterObject["bot_right_y"]) {
           return true;
         };
       } else {
@@ -91,29 +88,43 @@ jQuery ->
       };
     };
 
-    function successMessage() {
-      alert("success");
+    function displaySuccessMessage() {
+      var successMessage = $('.success');
+      successMessage.removeClass('closed').addClass('open');
+      successMessage.css('top', menuPositionY);
+      successMessage.css('left', menuPositionX);
     };
 
-    function hideCharacter() {
-
+    function hideCharacter(characterSelected) {
+      $('#' + characterSelected).addClass('closed');
     };
 
     function checkForGameOver() {
-
+      if($('.remaining-character.closed').length == $('.remaining-character').length) {
+        alert("You found everyone!")
+      };
     };
 
-    function tryAgainMessage() {
-
+    function displayTryAgainMessage() {
+      tryAgainMessage = $('.try-again');
+      tryAgainMessage.css('top', menuPositionY);
+      tryAgainMessage.css('left', menuPositionX);
+      tryAgainMessage.removeClass('closed').addClass('open');
     };
+
+    function hideOpenMessages() {
+      $('.message.open').removeClass('open').addClass('closed');
+    }
 
     document.addEventListener('click', function(click) {
-      if(!$(click.target).is('.selection-menu div, .selection-menu')) {
+      if(!$(click.target).is('.selection-menu div, .selection-menu, button')) {
+        hideOpenMessages();
         updateMenuAndClickCoords(click);
       }
     });
 
     $('button').click(function() {
       checkCharacterSelection($(this));
+      openCloseMenu();
     });
   });`
