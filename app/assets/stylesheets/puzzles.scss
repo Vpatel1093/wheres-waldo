@@ -114,6 +114,7 @@ body {
   background: #e2e2e2;
   display: inline-block;
   position: absolute;
+  z-index: 10;
 
   div {
     height: 30px;
@@ -135,6 +136,33 @@ body {
   border: 2px solid green;
   box-sizing: border-box;
   position: absolute;
+}
+
+.submit-score {
+  border: 2px solid #000;
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 200px;
+
+  div {
+    margin: 10px;
+  }
+
+  .score {
+    text-decoration: underline;
+    text-decoration-color: red;
+  }
+
+  .score-form {
+    width: 100%;
+
+    div input {
+      width: 50%;
+    }
+  }
 }
 
 .open {

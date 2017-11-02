@@ -1,5 +1,5 @@
 jQuery ->
-  `$('.puzzle-image').ready(function() {
+  `$('.show').ready(function() {
     var clickX;
     var clickY;
     var menu;
@@ -157,7 +157,8 @@ jQuery ->
     };
 
     function submitScore(formattedScore) {
-      
+      $('.submit-score').removeClass('closed');
+      $('.score-form div:last-of-type input').val(formattedScore);
     }
 
     document.addEventListener('click', function(click) {

@@ -16,6 +16,24 @@
   <div class="try-again message closed">
     <div>Try again!</div>
   </div>
+  <div class="submit-score closed">
+    <div>You found everyone! Submit your score below.</div>
+    <div class="score"></div>
+    <div class="score-form">
+      <%= form_for(@score) do |f| %>
+        <div><%= f.hidden_field :puzzle_id, :value => @puzzle.id %></div>
+        <div>
+          <%= f.label :name, "Name:" %>
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.label :score, "Score:" %>
+          <%= f.text_field :score, :readonly => true %>
+        </div>
+        <%= f.submit "Submit" %>
+      <% end %>
+    </div>
+  </div>
   <% @puzzle.characters.each do |character| %>
     <div class="<%= character.name %> marker closed"></div>
   <% end %>

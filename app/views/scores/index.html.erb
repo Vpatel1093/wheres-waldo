@@ -1,11 +1,14 @@
+<h4><%= link_to "Play again", root_path %></h4>
 <h1>Scores for "<%= @puzzle.name %>" Puzzle</h1>
-<div class="score-div" id="scores-heading">
-  <div class="name">Name</div>
-  <div class="score">Score</div>
-</div>
-<% @scores.each do |score| %>
-  <div class="score-div">
-    <div class="name"><%= score.name %></div>
-    <div class="score"><%= score.score %></div>
+<div id="scoreboard">
+  <div class="score-div" id="scores-heading">
+    <div class="name">Name</div>
+    <div class="score">Score</div>
   </div>
-<% end %>
+  <% @scores.each do |score| %>
+    <div class="score-div">
+      <div class="name"><%= score.name %></div>
+      <div class="score"><%= score.score %></div>
+    </div>
+  <% end %>
+</div>
