@@ -1,7 +1,7 @@
 class ScoresController < ApplicationController
   def index
     @puzzle = Puzzle.find(params[:puzzle_id])
-    @scores = @puzzle.scores
+    @scores = @puzzle.scores.order("score")
   end
 
   def create
