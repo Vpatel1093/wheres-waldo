@@ -1,5 +1,10 @@
 jQuery ->
-  `$('.show').ready(function() {
+  `$(document).on('turbolinks:load', function() {
+    // Only run script on puzzles#show page
+    if (!($('.puzzles.show').length >0)) {
+      return;
+    };
+
     var clickX;
     var clickY;
     var menu;
