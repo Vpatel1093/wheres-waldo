@@ -6,6 +6,7 @@ class PuzzlesController < ApplicationController
   def show
     @puzzle = Puzzle.find(params[:id])
     @puzzle_id = @puzzle.id
+    @score = Score.new
     respond_to do |format|
       format.html
       format.json { render json: @puzzle.characters }

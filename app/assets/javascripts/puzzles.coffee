@@ -1,5 +1,5 @@
 jQuery ->
-  `$(document).ready(function() {
+  `$('.puzzle-image').ready(function() {
     var clickX;
     var clickY;
     var menu;
@@ -142,7 +142,6 @@ jQuery ->
     function checkForGameOver() {
       if($('.remaining-character.closed').length == $('.remaining-character').length) {
         gameInPlay = false;
-        alert("You found everyone!");
       };
     };
 
@@ -158,7 +157,7 @@ jQuery ->
     };
 
     function submitScore(formattedScore) {
-      alert(formattedScore);
+      
     }
 
     document.addEventListener('click', function(click) {
@@ -171,6 +170,10 @@ jQuery ->
     $('button').click(function() {
       checkCharacterSelection($(this));
       openCloseMenu();
+    });
+
+    $(document).on('turbolinks:load', function() {
+      timeStart = new Date();
     });
 
     startTimer();
