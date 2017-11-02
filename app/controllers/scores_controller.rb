@@ -1,5 +1,6 @@
 class ScoresController < ApplicationController
   def index
-    @scores = Score.all
+    @puzzle = Puzzle.find(params[:puzzle_id])
+    @scores = @puzzle.scores
   end
 end

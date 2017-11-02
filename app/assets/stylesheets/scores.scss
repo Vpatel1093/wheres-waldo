@@ -1,3 +1,49 @@
-// Place all the styles related to the Scores controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Scores Index Page
+body {
+  text-align: center;
+
+  h1 {
+    color: #fff;
+  }
+}
+
+#scores-heading {
+  .name {
+    color: #000;
+    font-size: 24px;
+    text-decoration: underline;
+    text-decoration-color: #fff;
+  }
+
+  .score {
+    color: #000;
+    font-size: 24px;
+    text-decoration: underline;
+    text-decoration-color: #fff;
+  }
+}
+
+.score-div {
+  width: 70%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 6px;
+
+  * {
+    display: inline-block;
+    width: 40%;
+  }
+
+  .name {
+    color: #fff;
+    float: left;
+    text-align: center;
+  }
+
+  .score {
+    color: #fff;
+    float: right;
+    text-align: center;
+  }
+}
