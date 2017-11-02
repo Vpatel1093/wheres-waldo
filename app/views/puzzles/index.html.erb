@@ -1,9 +1,11 @@
 <h1 class="index-heading">Where's Waldo?</h1>
 <h3 class="index-heading">Select a puzzle below to begin</h3>
 
-<% @puzzles.each do |puzzle| %>
-  <div class="select-puzzle">
-    <h1><%= link_to puzzle.name, puzzle_path(puzzle) %></h1>
-    <%= link_to image_tag(puzzle.image_url, class: "puzzle-preview"), puzzle_path(puzzle) %>
-  </div>
-<% end %>
+<div class="puzzles-container">
+  <% @puzzles.each do |puzzle| %>
+    <div class="select-puzzle">
+      <h1><%= link_to puzzle.name, puzzle_path(puzzle) %></h1>
+      <%= link_to image_tag(puzzle.image_url, class: "puzzle-preview"), puzzle_path(puzzle) %>
+    </div>
+  <% end %>
+</div>

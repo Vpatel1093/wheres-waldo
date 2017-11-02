@@ -9,12 +9,21 @@ body {
   margin: 2px;
 }
 
+h3.index-heading {
+  color: #fff;
+}
+
+.puzzles-container {
+  margin: 0 auto;
+  width: 95%;
+}
+
 .select-puzzle {
   text-align: center;
   display: inline-block;
   width: 30%;
   vertical-align: top;
-  margin: 10px;
+  margin: 14px;
 }
 
 .select-puzzle a img:hover {
@@ -176,8 +185,8 @@ body {
 #remaining-characters {
   width: 120px;
   display: inline-block;
-  float: right;
-  margin-right: 10px;
+  float: left;
+  margin-left: 10px;
 
   h5 {
     margin: 6px auto;
